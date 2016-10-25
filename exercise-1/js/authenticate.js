@@ -53,9 +53,16 @@ $(function() {
     };
 
     // Assign event lister to form submission
-
-
-
+     // Assign event lister to form submission
+    $('.btn').on('submit', function(event) {
+        event.preventDefault();
+        var formId = $(this).attr('id');
+        if (formId == 'sign-up') {
+            signUp();
+        } else if (formId == 'sign-in') {
+            signIn();
+        }
+    });
     // Assign click event to logout button
 
 
