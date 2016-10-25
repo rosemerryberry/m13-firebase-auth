@@ -34,7 +34,7 @@ $(function() {
                 user.updateProfile({
                     displayName: displayName
                 }).then(function() {
-                    window.location = '/';
+                    window.location = 'index.html';
                 });
             }).catch(function(error) {
                 alert(error.message);
@@ -66,9 +66,9 @@ $(function() {
 
     // Assign event lister to form submission
      // Assign event lister to form submission
-    $('form').on('submit', function() {
-       // event.preventDefault();
-        var formId = $(this).attr('id');
+    $('form').on('submit', function(event) {
+        event.preventDefault();
+        var formId = this.id;
         if (formId == 'sign-up') {
             signUp();
         } else if (formId == 'sign-in') {
