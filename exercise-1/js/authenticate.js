@@ -23,7 +23,9 @@ $(function() {
 
         // Create a user using the values from your form
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
-            // Do something after the user has been created
+            user.updateProfile({
+                displayName:displayName
+            })
         });
 
 
