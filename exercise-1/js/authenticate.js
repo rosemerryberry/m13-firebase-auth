@@ -22,11 +22,23 @@ $(function() {
         var displayName = $("#displayName").val();
 
         // Create a user using the values from your form
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
-            user.updateProfile({
-                displayName:displayName
-            })
-        });
+        // firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+        //     user.updateProfile({
+        //         displayName:displayName
+        //     })
+        // });
+
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function(user) {
+                // Set display name
+                user.updateProfile({
+                    displayName: displayName
+                }).then(function() {
+                    window.location = '/';
+                });
+            }).catch(function(error) {
+                alert(error.message);
+            });
 
 
         // Create user, then set the user's display name
@@ -54,8 +66,8 @@ $(function() {
 
     // Assign event lister to form submission
      // Assign event lister to form submission
-    $('form').on('submit', function(event) {
-        event.preventDefault();
+    $('form').on('submit', function() {
+       // event.preventDefault();
         var formId = $(this).attr('id');
         if (formId == 'sign-up') {
             signUp();
